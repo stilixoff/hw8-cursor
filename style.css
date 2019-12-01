@@ -1,0 +1,236 @@
+body {
+    margin: 0;
+}
+
+.burger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 300px;
+    height: 300px;
+    background-color: #282C34;
+}
+
+.burger-button {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+input {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+span {
+    position: absolute;
+    display: block;
+    width: 90%;
+    height: 5%;
+    background-color: #fff;
+    left: 5%;
+    z-index: 1;
+}
+
+.one::before,
+.three::before {
+    content: "";
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    background-color: #282C34;
+    left: 15%
+}
+
+.two::before {
+    content: "";
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    background-color: #282C34;
+    right: 15%
+}
+
+.one {
+    top: 10%;
+}
+
+.two {
+    top: 47.5%;
+}
+
+.three {
+    bottom: 10%;
+}
+
+input:checked,
+input ~ .one, .two, .three {
+    transition-duration: 1s;
+}
+
+
+input:checked ~ .one{
+    transform: rotate(20deg);
+    opacity: 0;
+    top: -30%;
+}
+
+input:checked ~ .two {
+    top: unset;
+    bottom: 45%;
+    transform: rotate(45deg);
+}
+
+input:checked ~ .three {
+    bottom: 45%;
+    transform: rotate(-45deg);
+}
+
+input:checked:hover ~ .two {
+    box-shadow: -5px 0 20px red;
+}
+
+input:checked:hover ~ .three {
+    box-shadow: 5px 0 20px green;
+}
+
+/* pendulum */
+
+
+.pendulum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 300px;
+    background-color: #EBE6DB;
+    margin: auto;
+}
+
+.pendulum-ball {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.pendulum-shadow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+}
+
+.ball {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.shadow {
+    width: 30px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #979797;
+    filter: blur(3px);
+}
+
+.ball-1 {
+    background-color: #2F4F6B;
+    animation: left-ball .5s linear infinite alternate;
+}
+
+.ball-2 {
+    background: linear-gradient(to right, #2F4F6B 0%, #414960 100%) ;
+}
+
+.ball-3 {
+    background: linear-gradient(to right, #414960 0%, #68434B 100%) ;
+}
+
+.ball-4 {
+    background: linear-gradient(to right, #68434B 0%, #923D3C 100%) ;
+}
+
+.ball-5 {
+    background: linear-gradient(to right, #923D3C 0%, #B4382D 100%) ;
+}
+
+.ball-6 {
+    background: linear-gradient(to right, #B4382D 0%, #D53624 100%) ;
+}
+
+.ball-7 {
+    background-color: #D53624;
+    animation: right-ball .5s linear infinite alternate;
+}
+
+.shadow-1 {
+    animation: left-shadow .5s linear infinite alternate;
+}
+
+.shadow-7 {
+    animation: right-shadow .5s linear infinite alternate;
+}
+
+
+@keyframes left-ball {
+    0%, 50% {
+        transform: rotate(0) translateX(0);
+    }
+
+    100% {
+        transform: rotate(55deg) translateX(-50px);
+    }
+}
+
+@keyframes right-ball {
+    0% {
+        transform: rotate(-55deg) translateX(50px);
+    }
+
+    50%, 100% {
+        transform: rotate(0) translateX(0);
+    }
+}
+
+@keyframes left-shadow {
+    0%, 50% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: .2;
+        transform: translateX(-50px);
+    }
+}
+
+@keyframes right-shadow {
+    0%{
+        opacity: .2;
+        transform: translateX(50px);
+    }
+
+    50%, 100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
